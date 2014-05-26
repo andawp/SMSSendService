@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://xt.hnjiading.cn/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://xt.hnjiading.cn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://xt.hnjiading.cn/">
+      <s:element name="sendCall">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="receiver" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="smsContent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendCallResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sendCallResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendC6Call">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="receiver" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="smsContent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendC6CallResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sendC6CallResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserLoginCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserLoginCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserLoginCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="sendCallSoapIn">
+    <wsdl:part name="parameters" element="tns:sendCall" />
+  </wsdl:message>
+  <wsdl:message name="sendCallSoapOut">
+    <wsdl:part name="parameters" element="tns:sendCallResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendC6CallSoapIn">
+    <wsdl:part name="parameters" element="tns:sendC6Call" />
+  </wsdl:message>
+  <wsdl:message name="sendC6CallSoapOut">
+    <wsdl:part name="parameters" element="tns:sendC6CallResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserLoginCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserLoginCode" />
+  </wsdl:message>
+  <wsdl:message name="getUserLoginCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserLoginCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserName" />
+  </wsdl:message>
+  <wsdl:message name="getUserNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendCallHttpGetIn">
+    <wsdl:part name="receiver" type="s:string" />
+    <wsdl:part name="smsContent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendCallHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="sendC6CallHttpGetIn">
+    <wsdl:part name="receiver" type="s:string" />
+    <wsdl:part name="smsContent" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendC6CallHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="getUserLoginCodeHttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserLoginCodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserNameHttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="sendCallHttpPostIn">
+    <wsdl:part name="receiver" type="s:string" />
+    <wsdl:part name="smsContent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendCallHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="sendC6CallHttpPostIn">
+    <wsdl:part name="receiver" type="s:string" />
+    <wsdl:part name="smsContent" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendC6CallHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="getUserLoginCodeHttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserLoginCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserNameHttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="NetCallSoap">
+    <wsdl:operation name="sendCall">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送明源寻呼</wsdl:documentation>
+      <wsdl:input message="tns:sendCallSoapIn" />
+      <wsdl:output message="tns:sendCallSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendC6Call">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送寻呼</wsdl:documentation>
+      <wsdl:input message="tns:sendC6CallSoapIn" />
+      <wsdl:output message="tns:sendC6CallSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserLoginCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">将用户编码转换为用户登录名</wsdl:documentation>
+      <wsdl:input message="tns:getUserLoginCodeSoapIn" />
+      <wsdl:output message="tns:getUserLoginCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">将用户编码转换为部门+姓名</wsdl:documentation>
+      <wsdl:input message="tns:getUserNameSoapIn" />
+      <wsdl:output message="tns:getUserNameSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NetCallHttpGet">
+    <wsdl:operation name="sendCall">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送明源寻呼</wsdl:documentation>
+      <wsdl:input message="tns:sendCallHttpGetIn" />
+      <wsdl:output message="tns:sendCallHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendC6Call">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送寻呼</wsdl:documentation>
+      <wsdl:input message="tns:sendC6CallHttpGetIn" />
+      <wsdl:output message="tns:sendC6CallHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserLoginCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">将用户编码转换为用户登录名</wsdl:documentation>
+      <wsdl:input message="tns:getUserLoginCodeHttpGetIn" />
+      <wsdl:output message="tns:getUserLoginCodeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">将用户编码转换为部门+姓名</wsdl:documentation>
+      <wsdl:input message="tns:getUserNameHttpGetIn" />
+      <wsdl:output message="tns:getUserNameHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NetCallHttpPost">
+    <wsdl:operation name="sendCall">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送明源寻呼</wsdl:documentation>
+      <wsdl:input message="tns:sendCallHttpPostIn" />
+      <wsdl:output message="tns:sendCallHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendC6Call">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送寻呼</wsdl:documentation>
+      <wsdl:input message="tns:sendC6CallHttpPostIn" />
+      <wsdl:output message="tns:sendC6CallHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserLoginCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">将用户编码转换为用户登录名</wsdl:documentation>
+      <wsdl:input message="tns:getUserLoginCodeHttpPostIn" />
+      <wsdl:output message="tns:getUserLoginCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">将用户编码转换为部门+姓名</wsdl:documentation>
+      <wsdl:input message="tns:getUserNameHttpPostIn" />
+      <wsdl:output message="tns:getUserNameHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetCallSoap" type="tns:NetCallSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sendCall">
+      <soap:operation soapAction="http://xt.hnjiading.cn/sendCall" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendC6Call">
+      <soap:operation soapAction="http://xt.hnjiading.cn/sendC6Call" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserLoginCode">
+      <soap:operation soapAction="http://xt.hnjiading.cn/getUserLoginCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <soap:operation soapAction="http://xt.hnjiading.cn/getUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetCallSoap12" type="tns:NetCallSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sendCall">
+      <soap12:operation soapAction="http://xt.hnjiading.cn/sendCall" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendC6Call">
+      <soap12:operation soapAction="http://xt.hnjiading.cn/sendC6Call" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserLoginCode">
+      <soap12:operation soapAction="http://xt.hnjiading.cn/getUserLoginCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <soap12:operation soapAction="http://xt.hnjiading.cn/getUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetCallHttpGet" type="tns:NetCallHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="sendCall">
+      <http:operation location="/sendCall" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendC6Call">
+      <http:operation location="/sendC6Call" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserLoginCode">
+      <http:operation location="/getUserLoginCode" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <http:operation location="/getUserName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetCallHttpPost" type="tns:NetCallHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="sendCall">
+      <http:operation location="/sendCall" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendC6Call">
+      <http:operation location="/sendC6Call" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserLoginCode">
+      <http:operation location="/getUserLoginCode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <http:operation location="/getUserName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NetCall">
+    <wsdl:port name="NetCallSoap" binding="tns:NetCallSoap">
+      <soap:address location="http://192.168.0.2:8000/NetCall.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NetCallSoap12" binding="tns:NetCallSoap12">
+      <soap12:address location="http://192.168.0.2:8000/NetCall.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NetCallHttpGet" binding="tns:NetCallHttpGet">
+      <http:address location="http://192.168.0.2:8000/NetCall.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NetCallHttpPost" binding="tns:NetCallHttpPost">
+      <http:address location="http://192.168.0.2:8000/NetCall.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
